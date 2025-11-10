@@ -1,11 +1,57 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Jardim do Ozzy</title>
+    <title>Login - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/login.css}">
 </head>
 <body>
-<h1>Login</h1>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="login-section">
+    <div class="login-container">
+        <!-- Lado Esquerdo - Imagem -->
+        <div class="login-image">
+            <img src="/img/login-ilustracao.svg" alt="Ilustração Login">
+        </div>
+
+        <div class="login-form">
+            <h1>bem-vindo de volta</h1>
+            <p class="subtitle">entre para revisitar o Jardim do Ozzy</p>
+
+            <div class="form-card">
+                <form th:action="@{/login}" method="post">
+                    <div class="form-group">
+                        <label for="email">E-mail</label>
+                        <input type="email" id="email" name="email" placeholder="seuemail@exemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" placeholder="••••••••••••" required>
+                        <a href="#" class="forgot-password">Esqueci minha senha</a>
+                    </div>
+
+                    <button type="submit" class="btn-entrar">Entrar</button>
+                </form>
+            </div>
+
+            <p class="cadastro-link">
+                Novo por aqui? <a th:href="@{/cadastro}">Cadastre-se</a>
+            </p>
+        </div>
+    </div>
+</section>
+
 </body>
 </html>
