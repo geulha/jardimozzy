@@ -22,13 +22,14 @@
     <div class="login-container">
         <!-- Lado Esquerdo - Imagem -->
         <div class="login-image">
-            <img src="/img/login-ilustracao.svg" alt="Ilustração Login">
+            <div class="login-image-header">
+                <h1>bem-vindo de volta</h1>
+                <p class="subtitle">entre para revisitar o Jardim do Ozzy</p>
+            </div>
+            <img src="/img/img_login.png" alt="Ozzy">
         </div>
 
         <div class="login-form">
-            <h1>bem-vindo de volta</h1>
-            <p class="subtitle">entre para revisitar o Jardim do Ozzy</p>
-
             <div class="form-card">
                 <form th:action="@{/login}" method="post">
                     <div class="form-group">
