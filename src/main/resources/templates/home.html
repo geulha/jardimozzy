@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/home.css}">
+</head>
+<body>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/login}">Entrar</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="hero">
+    <div class="image-container">
+        <img src="/img/fundo_jardim_169.svg" alt="Fundo do Jardim" class="bg-img">
+
+        <div class="hero-content">
+            <h1>O Jardim do Ozzy</h1>
+            <p>um lugar onde nossos companheiros peludos<br>correm livres entre flores e memórias</p>
+            <a th:href="@{/jardim}" class="btn">Ver Jardim</a>
+        </div>
+    </div>
+</section>
+
+<script th:src="@{/js/home.js}"></script>
+
+</body>
+</html>
