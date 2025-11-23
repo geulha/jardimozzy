@@ -1,11 +1,41 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Jardim do Ozzy</title>
+    <title>A História - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/historia.css}">
 </head>
 <body>
-<h1>A História do Ozzy</h1>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/logout}">Sair</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="historia-section">
+    <div class="historia-container">
+        <div class="content-card">
+            <h1>A História do Ozzy</h1>
+
+            <p>O Jardim do Ozzy é um espaço criado para manter viva a memória dos nossos pets que já se foram. Aqui, qualquer pessoa pode registrar seu companheiro peludo, contar sua história e guardar essas lembranças para sempre — como um pequeno "jardim da memória".</p>
+
+            <p>A ideia surgiu após a perda do meu gatinho Ozzy, que esteve comigo por quase quatro anos e desapareceu em junho de 2025. Este site é tanto uma homenagem a ele quanto um espaço para ajudar outras pessoas a preservarem a história dos seus próprios pets.</p>
+        </div>
+
+        <!-- Ilustrações decorativas -->
+        <div class="cat-illustration"></div>
+        <div class="flower-illustration"></div>
+        <div class="polaroid-image"></div>
+    </div>
+</section>
+
 </body>
 </html>

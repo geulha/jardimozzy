@@ -1,0 +1,261 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/fonts/LeagueSpartan-bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand Bold';
+    src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Fundo gradiente suave */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1eee3;
+    z-index: -2;
+}
+
+/* Header colorido com degradê */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 50;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to right, #fc729c, #f9c7d3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    display: none;
+}
+
+nav a:hover {
+    color: #2d3436;
+    transform: translateY(-2px);
+}
+
+/* Seção principal */
+.historia-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8rem 2rem 3rem;
+}
+
+.historia-container {
+    background: white;
+    position: relative;
+    border-radius: 24px;
+    max-width: 1000px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Card de conteúdo */
+.content-card {
+    background: white;
+    border-radius: 24px;
+    padding: 3rem 3.5rem;
+    max-width: 800px;
+    position: relative;
+    z-index: 10;
+}
+
+.content-card h1 {
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.content-card p {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1rem;
+    color: #4a4a4a;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1.2rem;
+}
+
+/* Polaroid */
+.polaroid {
+    background: white;
+    padding: 1rem;
+    width: 320px;
+}
+
+.polaroid-image {
+    width: 100%;
+    height: 400px;
+    background: url('/img/ozzy.png') no-repeat center;
+    background-size: contain;
+}
+
+/* Ilustração do gatinho - canto esquerdo */
+.cat-illustration {
+    position: absolute;
+    left: -8%;
+    bottom: -12%;
+    width: 180px;
+    height: 180px;
+    background: url('/img/img_historia.png') no-repeat center;
+    background-size: contain;
+    z-index: 150;
+}
+
+/* Ilustração da flor - canto direito */
+.flower-illustration {
+    position: absolute;
+    right: 0%;
+    bottom: 0%;
+    width: 100px;
+    height: 110px;
+    background: url('/img/flor.png') no-repeat center;
+    background-size: contain;
+    z-index: 5;
+}
+
+/* Responsivo */
+@media (max-width: 1024px) {
+    .cat-illustration {
+        width: 140px;
+        height: 140px;
+        left: -3%;
+    }
+
+    .flower-illustration {
+        width: 160px;
+        height: 180px;
+        right: -2%;
+    }
+}
+
+@media (max-width: 768px) {
+    header {
+        padding: 1.5rem 2rem;
+    }
+
+    nav ul {
+        gap: 1.5rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+
+    .historia-section {
+        padding: 7rem 1.5rem 3rem;
+    }
+
+    .content-card {
+        padding: 2.5rem 2rem;
+    }
+
+    .content-card h1 {
+        font-size: 1.7rem;
+    }
+
+    .polaroid {
+        width: 240px;
+    }
+
+    .polaroid-image {
+        height: 220px;
+    }
+
+    .cat-illustration,
+    .flower-illustration {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    .historia-section {
+        padding: 6rem 1rem 2rem;
+    }
+
+    .content-card {
+        padding: 2rem 1.5rem;
+    }
+
+    .content-card h1 {
+        font-size: 1.5rem;
+    }
+
+    .content-card p {
+        font-size: 0.95rem;
+    }
+
+    .polaroid {
+        width: 200px;
+    }
+
+    .polaroid-image {
+        height: 180px;
+    }
+
+    .polaroid-caption {
+        font-size: 0.85rem;
+    }
+}

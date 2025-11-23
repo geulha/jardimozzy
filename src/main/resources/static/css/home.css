@@ -30,8 +30,8 @@
 
 body {
     font-family: 'Quicksand', sans-serif;
-    overflow: hidden;
-    height: auto;
+    overflow-x: hidden;
+    height: 100vh;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -58,7 +58,7 @@ header {
     width: 100%;
     z-index: 50;
     padding: 1.5rem 3rem;
-    background: linear-gradient(to right, #ff9bb1, #f9c7d3, #f1eee3);
+    background: linear-gradient(to right, #fc729c, #f9c7d3);
 }
 
 nav ul {
@@ -95,6 +95,7 @@ nav a:hover {
     height: 100vh;
     padding: 0 0 0 4rem;
     gap: 3rem;
+    position: relative;
 }
 
 /* Lado esquerdo - Texto */
@@ -127,14 +128,14 @@ nav a:hover {
 /* Segunda linha com "do" inline */
 .hero-content h1 .line2 {
     font-family: 'League Spartan', serif;
-    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    font-size: clamp(3.5rem, 8vw, 6rem);
     display: inline-block;
 }
 
 /* Terceira linha "Ozzy" ao lado de "do" com gradiente */
 .hero-content h1 .line3 {
     font-family: 'Leckerli One', serif;
-    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    font-size: clamp(3.5rem, 8vw, 6rem);
     background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -176,31 +177,15 @@ nav a:hover {
 
 /* Lado direito - Imagem sobreposta ao header */
 .image-container {
-    position: fixed;
-    top: 0;
+    position: absolute;
     right: 0;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
+    bottom: 0;
+    height: 654px;
+    width: 614px;
+    background: url('/img/img_landing.png') no-repeat center bottom;
+    background-size: contain;
     z-index: 100;
-}
-
-/* Remove forma orgânica de fundo */
-.image-container::before {
-    display: none;
-}
-
-.bg-img {
-    height: 100vh;
-    width: auto;
-    display: block;
-    object-fit: contain;
-}
-
-/* Remove elementos decorativos */
-.decorative-circle {
-    display: none;
+    pointer-events: none;
 }
 
 /* Responsivo */
@@ -215,7 +200,8 @@ nav a:hover {
     }
 
     .image-container {
-        max-width: 450px;
+        width: 450px;
+        height: 500px;
     }
 }
 
@@ -243,17 +229,23 @@ nav a:hover {
         max-width: 100%;
     }
 
-    .hero-content h1 {
+    .hero-content h1 .line1 {
+        font-size: 2.5rem;
+    }
+
+    .hero-content h1 .line2 {
+        font-size: 2rem;
+    }
+
+    .hero-content h1 .line3 {
         font-size: 2.5rem;
     }
 
     .image-container {
-        max-width: 350px;
+        position: relative;
+        width: 350px;
+        height: 380px;
         margin-top: 2rem;
-    }
-
-    .decorative-circle {
-        display: none;
     }
 }
 
@@ -270,7 +262,15 @@ nav a:hover {
         padding: 5rem 1.5rem 2rem;
     }
 
-    .hero-content h1 {
+    .hero-content h1 .line1 {
+        font-size: 2rem;
+    }
+
+    .hero-content h1 .line2 {
+        font-size: 1.6rem;
+    }
+
+    .hero-content h1 .line3 {
         font-size: 2rem;
     }
 
@@ -284,6 +284,7 @@ nav a:hover {
     }
 
     .image-container {
-        max-width: 280px;
+        width: 280px;
+        height: 300px;
     }
 }
