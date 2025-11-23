@@ -1,6 +1,12 @@
 @font-face {
-    font-family: 'Cormorant Infant Bold';
-    src: url('/fonts/CormorantInfant-bold.ttf') format('truetype');
+    font-family: 'League Spartan';
+    src: url('/fonts/LeagueSpartan-bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Leckerli One';
+    src: url('/fonts/LeckerliOne-Regular.ttf') format('truetype');
     font-weight: bold;
 }
 
@@ -13,7 +19,7 @@
 @font-face {
     font-family: 'Quicksand Bold';
     src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
-    font-weight: normal;
+    font-weight: bold;
 }
 
 * {
@@ -25,239 +31,259 @@
 body {
     font-family: 'Quicksand', sans-serif;
     overflow: hidden;
+    height: auto;
     user-select: none;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
 }
 
-/* Fundo gradiente */
+/* Fundo gradiente suave */
 .background-gradient {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: linear-gradient(to right, #fff7ad, #ffcbcb);
+    background: #f1eee3;
     z-index: -2;
 }
 
-/* Seção hero */
-.hero {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 9vh 2.5vw 3vh;
-    cursor: default;
-}
-
-/* Header fixo no topo - alinhado com a margem esquerda da imagem */
+/* Header colorido com degradê */
 header {
     position: fixed;
-    top: 1.5vh;
+    top: 0;
     left: 0;
     right: 0;
-    width: 94vw;
-    max-width: 1800px;
-    margin: 0 auto;
-    margin-left: -2.4vw; /* ← empurra pra direita */
-    z-index: 100;
-    padding: 1rem 0;
+    width: 100%;
+    z-index: 50;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to right, #ff9bb1, #f9c7d3, #f1eee3);
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    justify-content: flex-end;
-    gap: 2rem;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    align-items: center;
 }
 
 nav a {
     text-decoration: none;
-    color: #333;
+    color: white;
     font-weight: 600;
     font-size: 1rem;
-    transition: color 0.3s ease;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    display: none;
 }
 
 nav a:hover {
-    color: #f88f80;
+    color: #2d3436;
+    transform: translateY(-2px);
 }
 
-/* Container da imagem*/
-.image-container {
-    position: relative;
-    width: 94vw;
-    max-width: 1800px;
-    height: 0;
-    padding-bottom: 52.875%;
-    border-radius: 20px;
-    overflow: hidden;
+/* Layout principal */
+.hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    padding: 0 0 0 4rem;
+    gap: 3rem;
 }
 
-.bg-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    display: block;
-    object-fit: contain;
-}
-
-/* Conteúdo sobre a imagem*/
+/* Lado esquerdo - Texto */
 .hero-content {
-    position: absolute;
-    top: 40%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #f5f5f5;
+    flex: 1;
+    max-width: 500px;
     z-index: 2;
-    padding: 2rem;
-    width: 90%;
+    padding-bottom: 0rem;
+    margin-top: 4rem;
 }
 
 .hero-content h1 {
-    font-family: 'Cormorant Infant Bold', serif;
-    font-size: clamp(2.5rem, 6vw, 4.5rem);
-    margin-bottom: 0.6rem;
-    font-weight: bold;
-    letter-spacing: 2px;
-    color: #f5f5f5;
-    text-shadow:
-        3px 3px 0 #f88f80,
-        6px 6px 0 rgba(228, 102, 102, 0.5);
+    color: #2d3436;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -1px;
+    text-align: center;
+}
+
+/* Primeira linha maior */
+.hero-content h1 .line1 {
+    font-family: 'League Spartan', serif;
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    text-align: center;
+    display: block;
+    margin-top: 1rem;
+    margin-bottom: -1.5rem;
+}
+
+/* Segunda linha com "do" inline */
+.hero-content h1 .line2 {
+    font-family: 'League Spartan', serif;
+    font-size: clamp(2.8rem, 6vw, 4.5rem);
+    display: inline-block;
+}
+
+/* Terceira linha "Ozzy" ao lado de "do" com gradiente */
+.hero-content h1 .line3 {
+    font-family: 'Leckerli One', serif;
+    font-size: clamp(3.5rem, 7vw, 5.5rem);
+    background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    display: inline-block;
+    line-height: 1.4;
 }
 
 .hero-content p {
     font-family: 'Quicksand', sans-serif;
-    font-size: clamp(0.85rem, 1.8vw, 1.1rem);
-    margin-bottom: 0.9rem;
-    line-height: 1.6;
-    color: #3e393a;
+    font-size: 1.1rem;
+    color: #636e72;
+    line-height: 1.8;
+    margin: 0 auto 2rem auto;
+    text-align: center;
 }
 
-/* Botão */
+/* Botão moderno centralizado */
 .btn {
-    display: inline-block;
-    background-color: rgba(253, 209, 124, 0.55); /* mais transparente */
-    color: #333;
-    padding: 1rem 2rem;
-    border-radius: 12px;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #5f524b 0%, #3e393a 100%);
+    color: white;
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
     text-decoration: none;
     font-weight: 600;
     font-family: 'Quicksand Bold', sans-serif;
+    font-size: 1rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(8px);
+    box-shadow: 0 8px 20px rgba(95, 82, 75, 0.3);
 }
 
 .btn:hover {
-    background-color: rgba(252, 212, 222, 0.55); /* um tom rosado mais visível */
-    transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 28px rgba(95, 82, 75, 0.4);
 }
 
-/* Animações SVG */
-
-/* g2 - Estrelas brilhando */
-@keyframes brilhar {
-    0%, 100% {
-        opacity: 1;
-        filter: brightness(1);
-    }
-    50% {
-        opacity: 0.6;
-        filter: brightness(1.5);
-    }
+/* Lado direito - Imagem sobreposta ao header */
+.image-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 100;
 }
 
-/* g5 - Passarinho pulando */
-@keyframes pular {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-8px);
-    }
+/* Remove forma orgânica de fundo */
+.image-container::before {
+    display: none;
 }
 
-/* g8 - Flores balançando */
-@keyframes balancar {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(3px);
-    }
+.bg-img {
+    height: 100vh;
+    width: auto;
+    display: block;
+    object-fit: contain;
 }
 
-/* g197 - Nuvens flutuando */
-@keyframes flutuar {
-    0%, 100% {
-        transform: translateX(0);
-    }
-    50% {
-        transform: translateX(40px);
-    }
+/* Remove elementos decorativos */
+.decorative-circle {
+    display: none;
 }
 
 /* Responsivo */
-@media (max-width: 1200px) {
-    .image-container,
-    header {
-        width: 94vw;
+@media (max-width: 1024px) {
+    .hero {
+        padding: 0 3rem;
+        gap: 2rem;
     }
 
-    .hero {
-        padding: 7vh 3vw 2vh;
+    .hero-content {
+        max-width: 400px;
+    }
+
+    .image-container {
+        max-width: 450px;
     }
 }
 
 @media (max-width: 768px) {
     header {
-        width: 92vw;
-        padding: 0.8rem 0;
-        top: 1.5vh;
+        padding: 1.5rem 2rem;
     }
 
     nav ul {
-        gap: 1.2rem;
+        gap: 1.5rem;
     }
 
     nav a {
         font-size: 0.9rem;
     }
 
-    .image-container {
-        width: 92vw;
-        height: 88vh;
+    .hero {
+        flex-direction: column;
+        justify-content: center;
+        padding: 6rem 2rem 3rem;
+        text-align: center;
     }
 
-    .hero {
-        padding: 6vh 4vw 2vh;
+    .hero-content {
+        max-width: 100%;
+    }
+
+    .hero-content h1 {
+        font-size: 2.5rem;
+    }
+
+    .image-container {
+        max-width: 350px;
+        margin-top: 2rem;
+    }
+
+    .decorative-circle {
+        display: none;
     }
 }
 
 @media (max-width: 480px) {
-    header,
-    .image-container {
-        width: 90vw;
+    header {
+        padding: 1rem 1.5rem;
     }
 
     nav ul {
         gap: 1rem;
     }
 
-    nav a {
-        font-size: 0.85rem;
+    .hero {
+        padding: 5rem 1.5rem 2rem;
     }
 
-    .hero {
-        padding: 5vh 5vw 2vh;
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .hero-content p {
+        font-size: 1rem;
+    }
+
+    .btn {
+        padding: 0.9rem 2rem;
+        font-size: 0.95rem;
+    }
+
+    .image-container {
+        max-width: 280px;
     }
 }

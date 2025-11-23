@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="shortcut icon" type="image/x-icon" th:href="@{/favicon.ico}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Jardim do Ozzy</title>
@@ -12,25 +13,31 @@
 <header>
     <nav>
         <ul>
-            <li><a th:href="@{/login}">Entrar</a></li>
-            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/historia">A História do Ozzy</a></li>
+            <li><a href="/perfil">Perfil</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="hero">
-    <div class="image-container">
-        <img src="/img/fundo_jardim_169.svg" alt="Fundo do Jardim" class="bg-img">
+    <!-- Lado esquerdo: Texto -->
+    <div class="hero-content">
+        <h1>
+            <span class="line1">O Jardim</span>
+            <span class="line-wrapper">
+                <span class="line2">do</span>
+                <span class="line3">Ozzy</span>
+            </span>
+        </h1>
+        <p>Aqui seu companheiro peludo vira uma flor eterna no Jardim do Ozzy, onde sua memória jamais é esquecida.</p>
+        <a href="/login" class="btn">Entrar</a>
+    </div>
 
-        <div class="hero-content">
-            <h1>O Jardim do Ozzy</h1>
-            <p>um lugar onde nossos companheiros peludos<br>correm livres entre flores e memórias</p>
-            <a th:href="@{/jardim}" class="btn">Ver Jardim</a>
-        </div>
+    <!-- Lado direito: Imagem -->
+    <div class="image-container">
+        <img src="/img/img_landing.png" alt="Jardim do Ozzy" class="bg-img">
     </div>
 </section>
-
-<script th:src="@{/js/home.js}"></script>
-
 </body>
 </html>

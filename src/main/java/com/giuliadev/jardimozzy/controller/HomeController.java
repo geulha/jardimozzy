@@ -22,9 +22,9 @@ public class HomeController {
         return "historia";
     }
 
-    @GetMapping("/jardim")
-    public String jardim() {
-        return "jardim";
+    @GetMapping("/perfil")
+    public String perfil() {
+        return "perfil";
     }
 
 }
