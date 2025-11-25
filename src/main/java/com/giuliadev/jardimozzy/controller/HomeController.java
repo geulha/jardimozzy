@@ -27,4 +27,14 @@ public class HomeController {
         return "perfil";
     }
 
+    @GetMapping("/cadastro")
+    public String cadastro() {
+        return "cadastro";
+    }
+
+    @GetMapping("/senha")
+    public String senha() {
+        return "senha";
+    }
+
 }

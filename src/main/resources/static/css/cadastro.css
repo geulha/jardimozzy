@@ -1,0 +1,312 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/fonts/LeagueSpartan-bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand Bold';
+    src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Quicksand', sans-serif;
+    overflow: hidden;
+    height: 100vh;
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+}
+
+/* Fundo gradiente suave */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1eee3;
+    z-index: -2;
+}
+
+/* Header colorido com degradê */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 150;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to right, #fc729c, #f9c7d3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+nav a::after {
+    display: none;
+}
+
+nav a:hover {
+    color: #2d3436;
+    transform: translateY(-2px);
+}
+
+/* --- Ilustrações decorativas (soltas) --- */
+.catdog-left-illustration {
+    position: fixed;
+    left: 3%;
+    bottom: -5%;
+    width: 220px;
+    height: 220px;
+    background: url('/img/animais_cadastro.png') no-repeat center;
+    background-size: contain;
+    z-index: 100;
+}
+
+.cat-right-illustration {
+    position: fixed;
+    right: 14%;
+    top: 9%;
+    width: 180px;
+    height: 180px;
+    background: url('/img/gato_cadastro.png') no-repeat center;
+    background-size: contain;
+    z-index: 100;
+}
+
+.dog-illustration {
+    position: fixed;
+    right: 3%;
+    bottom: -1.5%;
+    width: 300px;
+    height: 180px;
+    background: url('/img/salsisha.png') no-repeat center;
+    background-size: contain;
+    z-index: 100;
+}
+
+/* --- Seção principal --- */
+.cadastro-section {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6rem 1rem 3rem;
+}
+
+/* Container principal centralizado */
+.cadastro-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* --- Card de cadastro centralizado --- */
+.cadastro-form {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    z-index: 10;
+    max-width: 1000px;
+    max-height: 515px;
+    width: 100%;
+}
+
+/* Título do card */
+.form-header {
+    text-align: center;
+}
+
+.form-header h1 {
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 2.5rem;
+    background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* --- Cartão rosinha --- */
+.form-card {
+    background: linear-gradient(135deg, #ffc8d5 0%, #ffb8cc 100%);
+    border-radius: 20px;
+    padding: 2rem 2.5rem;
+    box-shadow: 0 2px 8px rgba(248, 143, 128, 0.12);
+    width: 100%;
+    margin-bottom: 2rem;
+}
+
+/* --- Formulário --- */
+.form-card form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.2rem;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+label {
+    font-size: 0.85rem;
+    color: #333;
+    font-weight: 600;
+}
+
+input, select {
+    padding: 0.8rem 0.9rem;
+    border: none;
+    border-radius: 12px;
+    background: white;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(168, 201, 160, 0.2);
+}
+
+input::placeholder {
+    color: #aaa;
+}
+
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
+}
+
+select option {
+    padding: 0.5rem;
+}
+
+/* --- Botão Cadastrar --- */
+.btn-cadastrar {
+    background: linear-gradient(135deg, #ff94b3 0%, #ff7fa6 100%);
+    color: white;
+    font-family: 'Quicksand Bold', sans-serif;
+    border: none;
+    border-radius: 12px;
+    padding: 0.9rem;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    width: 60%;
+    max-width: 300px;
+    align-self: center;
+}
+
+.btn-cadastrar:hover {
+    background: linear-gradient(135deg, #ff7fa6 0%, #ff6a99 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 148, 179, 0.3);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 1024px) {
+    .catdog-left-illustration,
+    .cat-right-illustration,
+    .dog-illustration {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .cadastro-form {
+        padding: 2rem 1.5rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .form-card {
+        padding: 1.5rem 1.8rem;
+    }
+
+    .form-row {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cadastro-section {
+        padding: 7rem 1rem 2rem;
+    }
+
+    .cadastro-form {
+        padding: 1.5rem 1rem;
+    }
+
+    .form-header h1 {
+        font-size: 1.3rem;
+    }
+
+    .form-card {
+        padding: 1.2rem 1.5rem;
+    }
+}
