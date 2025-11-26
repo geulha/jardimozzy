@@ -80,60 +80,39 @@ nav a:hover {
     transform: translateY(-2px);
 }
 
+/* --- Ilustração do gato --- */
+.cat-illustration {
+    position: fixed;
+    right: 13%;
+    bottom: 2%;
+    width: 280px;
+    height: 280px;
+    background: url('/img/gato_senha.png') no-repeat center;
+    background-size: contain;
+    z-index: 100;
+}
+
 /* --- Seção principal --- */
-.login-section {
+.senha-section {
     flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
     padding: 7rem 1rem 3rem;
-    position: relative;
 }
 
-/* Container principal centralizado */
-.login-container {
+/* Container principal */
+.senha-container {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     max-width: 1400px;
-    height: 100%;
     position: relative;
 }
 
-/* Ilustração da moça - lado esquerdo */
-.login-container::before {
-    content: '';
-    position: absolute;
-    left: 0%;
-    bottom: 0%;
-    width: 480px;
-    height: 600px;
-    background: url('/img/pessoa_gato.png') no-repeat center bottom;
-    background-size: contain;
-    z-index: 100;
-}
-
-/* Ilustração do cachorro - lado direito */
-.login-container::after {
-    content: '';
-    position: absolute;
-    right: 0%;
-    bottom: 0%;
-    width: 550px;
-    height: 314px;
-    background: url('/img/cachorro.png') no-repeat center bottom;
-    background-size: contain;
-    z-index: 100;
-}
-
-/* Esconder a antiga área de imagem */
-.login-image {
-    display: none;
-}
-
-/* --- Card de login centralizado --- */
-.login-form {
+/* --- Card centralizado --- */
+.senha-form {
     background: white;
     border-radius: 24px;
     padding: 2rem 2rem;
@@ -144,31 +123,23 @@ nav a:hover {
     justify-content: center;
     gap: 1.2rem;
     z-index: 10;
-    max-width: 420px;
-    max-height: 500px;
+    max-width: 520px;
     width: 100%;
 }
 
 /* Título do card */
-.login-form-header {
+.form-header {
     text-align: center;
     margin-bottom: 0.5rem;
 }
 
-.login-form-header h1 {
+.form-header h1 {
     font-family: 'Quicksand Bold', sans-serif;
-    font-size: 2.5rem;
+    font-size: 2rem;
     background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
-    margin-bottom: 0.4rem;
-}
-
-.login-form-header .subtitle {
-    font-size: 0.9rem;
-    color: #666;
-    line-height: 1.4;
 }
 
 /* --- Cartão rosinha --- */
@@ -199,7 +170,7 @@ label {
     font-weight: 600;
 }
 
-input {
+input, select {
     padding: 0.8rem 0.9rem;
     border: none;
     border-radius: 12px;
@@ -209,7 +180,7 @@ input {
     transition: all 0.3s ease;
 }
 
-input:focus {
+input:focus, select:focus {
     outline: none;
     box-shadow: 0 0 0 3px rgba(168, 201, 160, 0.2);
 }
@@ -218,21 +189,21 @@ input::placeholder {
     color: #aaa;
 }
 
-/* --- Esqueci minha senha --- */
-.forgot-password {
-    font-size: 0.8rem;
-    color: #f88f80;
-    text-decoration: none;
-    margin-top: 0.2rem;
-    transition: color 0.3s ease;
+select {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.5rem;
 }
 
-.forgot-password:hover {
-    color: #e67a6b;
+select option {
+    padding: 0.5rem;
 }
 
-/* --- Botão Entrar --- */
-.form-card .btn-entrar {
+/* --- Botão Enviar --- */
+.btn-enviar {
     background: linear-gradient(135deg, #ff94b3 0%, #ff7fa6 100%);
     color: white;
     font-family: 'Quicksand Bold', sans-serif;
@@ -245,55 +216,31 @@ input::placeholder {
     margin-top: 0.3rem;
 }
 
-.form-card .btn-entrar:hover {
+.btn-enviar:hover {
     background: linear-gradient(135deg, #ff7fa6 0%, #ff6a99 100%);
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(255, 148, 179, 0.3);
 }
 
-/* --- Link de cadastro --- */
-.cadastro-link {
-    font-size: 0.9rem;
-    color: #666;
-    text-align: center;
-}
-
-.cadastro-link a {
-    color: #333;
-    text-decoration: none;
-    font-weight: 600;
-}
-
-.cadastro-link a:hover {
-    color: #f88f80;
-}
-
 /* --- Responsivo --- */
 @media (max-width: 1024px) {
-    .login-container::before {
+    .cat-illustration {
         width: 200px;
-        height: 250px;
-        left: 2%;
-    }
-
-    .login-container::after {
-        width: 250px;
-        height: 150px;
-        right: 2%;
+        height: 200px;
+        right: 3%;
     }
 }
 
 @media (max-width: 768px) {
-    .login-container::before,
-    .login-container::after {
+    .cat-illustration {
         display: none;
     }
 
-    .login-form {
+    .senha-form {
         padding: 2rem 1.5rem;
     }
 
-    .login-form-header h1 {
+    .form-header h1 {
         font-size: 1.6rem;
     }
 
@@ -315,15 +262,15 @@ input::placeholder {
 }
 
 @media (max-width: 480px) {
-    .login-section {
+    .senha-section {
         padding: 6rem 1rem 2rem;
     }
 
-    .login-form {
+    .senha-form {
         padding: 1.5rem 1rem;
     }
 
-    .login-form-header h1 {
+    .form-header h1 {
         font-size: 1.4rem;
     }
 

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nova Senha - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/novasenha.css}">
+</head>
+<body>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/logout}">Sair</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="novasenha-section">
+    <div class="novasenha-container">
+        <div class="novasenha-form">
+            <div class="form-header">
+                <h1>Redefina sua senha</h1>
+            </div>
+
+            <div class="form-card">
+                <form th:action="@{/redefinir-senha}" method="post">
+                    <div class="form-group">
+                        <label for="nova-senha">Nova senha</label>
+                        <input type="password" id="nova-senha" name="novaSenha" placeholder="••••••••••••" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="confirmar-senha">Confirmar nova senha</label>
+                        <input type="password" id="confirmar-senha" name="confirmarSenha" placeholder="••••••••••••" required>
+                    </div>
+
+                    <button type="submit" class="btn-redefinir">Redefinir Senha</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ilustração do cachorro -->
+        <div class="dog-illustration"></div>
+    </div>
+</section>
+
+</body>
+</html>

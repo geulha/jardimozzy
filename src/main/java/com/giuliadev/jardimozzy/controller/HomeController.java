@@ -37,4 +37,9 @@ public class HomeController {
         return "senha";
     }
 
+    @GetMapping("/novasenha")
+    public String novasenha() {
+        return "novasenha";
+    }
+
 }

@@ -1,11 +1,63 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Jardim do Ozzy</title>
+    <title>Recuperar Senha - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/senha.css}">
 </head>
 <body>
-<h1>Esqueceu a senha - EM CONSTRUÇÃO</h1>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/logout}">Sair</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="senha-section">
+    <div class="senha-container">
+        <div class="senha-form">
+            <div class="form-header">
+                <h1>Confirme seus dados</h1>
+            </div>
+
+            <div class="form-card">
+                <form th:action="@{/recuperar-senha}" method="post">
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="email@exemplo.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="pergunta">Pergunta de segurança</label>
+                        <select id="pergunta" name="pergunta" required>
+                            <option value="" disabled selected>Qual o cidade de nascimento da sua mãe?</option>
+                            <option value="Qual é o nome do seu melhor amigo de infância?">Qual é o nome do seu melhor amigo de infância?</option>
+                            <option value="Qual foi o destino da sua primeira viagem?">Qual foi o destino da sua primeira viagem?</option>
+                            <option value="Qual o nome da cidade que sua mãe nasceu?">Qual o nome da cidade que sua mãe nasceu?</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="resposta">Resposta</label>
+                        <input type="text" id="resposta" name="resposta" placeholder="Exemplo:" required>
+                    </div>
+
+                    <button type="submit" class="btn-enviar">Enviar</button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Ilustração do gato -->
+        <div class="cat-illustration"></div>
+    </div>
+</section>
+
 </body>
 </html>
