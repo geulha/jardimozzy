@@ -23,7 +23,6 @@
 
 <section class="perfil-section">
     <div class="perfil-container">
-        <!-- Barra de boas-vindas -->
         <div class="welcome-bar">
             <h1 class="welcome-text">Olá, <span th:text="${usuario.nome}">Nome</span>!</h1>
             <div class="welcome-actions">
@@ -32,14 +31,12 @@
             </div>
         </div>
 
-        <!-- Seção de pets -->
         <div class="pets-section">
             <div class="pets-header">
                 <h2>Meus pets</h2>
                 <a th:href="@{/criarpet}" class="btn-adicionar">Adicionar Pet</a>
             </div>
 
-            <!-- Lista de pets (quando existir pelo menos um) -->
             <div class="pets-grid" th:if="${pets != null and !pets.isEmpty()}">
                 <div class="pet-card" th:each="pet : ${pets}">
                     <div class="pet-card-header">
@@ -61,14 +58,15 @@
                     </div>
 
                     <div class="pet-image">
-                        <img th:src="@{'/uploads/pets/' + ${pet.foto}}" th:alt="${pet.nome}" onerror="this.src='/img/pet-placeholder.png'">
+                        <img th:src="${pet.foto != null ? '/uploads/pets/' + pet.foto : '/img/placeholder_img.png'}"
+                             th:alt="${pet.nome}"
+                             onerror="this.src='/img/placeholder_img.png'">
                     </div>
 
                     <a th:href="@{/pet/{id}(id=${pet.id})}" class="btn-visitar">Visitar</a>
                 </div>
             </div>
 
-            <!-- Mensagem quando não há pets cadastrados -->
             <div class="empty-state" th:if="${pets == null or pets.isEmpty()}">
                 <div class="empty-icon">🐾</div>
                 <p>Você ainda não registrou nenhum pet</p>

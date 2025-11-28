@@ -35,20 +35,17 @@
             </div>
         </div>
 
-        <!-- Grid de pets (horizontal scroll) -->
         <div class="pets-grid" id="petsGrid">
-            <!-- Estado vazio (quando não há pets) -->
             <div th:if="${#lists.isEmpty(pets)}" class="empty-state">
                 <div class="empty-icon">🐾</div>
                 <p>Nenhum pet cadastrado ainda.</p>
             </div>
 
-            <!-- Cards dos pets -->
             <div class="pet-card" th:each="pet : ${pets}" th:data-nome="${pet.nome}">
                 <div class="pet-image-container">
-                    <img th:src="@{'/uploads/pets/' + ${pet.foto}}"
+                    <img th:src="${pet.foto != null ? '/uploads/pets/' + pet.foto : '/img/placeholder_img.png'}"
                          th:alt="${pet.nome}"
-                         onerror="this.src='/img/default-pet.png'">
+                         onerror="this.src='/img/placeholder_img.png'">
                 </div>
                 <div class="pet-info">
                     <h3 th:text="${pet.nome}">Nome do Pet</h3>
@@ -70,12 +67,35 @@
         const grid = document.getElementById('petsGrid');
         const cards = grid.getElementsByClassName('pet-card');
 
+        let encontrou = false;
+
         for (let i = 0; i < cards.length; i++) {
             const nomePet = cards[i].getAttribute('data-nome');
             if (nomePet && nomePet.toLowerCase().includes(filter)) {
                 cards[i].style.display = '';
+                encontrou = true;
             } else {
                 cards[i].style.display = 'none';
+            }
+        }
+
+        let mensagemNaoEncontrado = document.getElementById('mensagemNaoEncontrado');
+
+        if (!encontrou && filter.length > 0) {
+            if (!mensagemNaoEncontrado) {
+                mensagemNaoEncontrado = document.createElement('div');
+                mensagemNaoEncontrado.id = 'mensagemNaoEncontrado';
+                mensagemNaoEncontrado.className = 'empty-state';
+                mensagemNaoEncontrado.innerHTML = `
+                    <div class="empty-icon">🐾</div>
+                    <p>Nenhum pet encontrado.</p>
+                `;
+                grid.appendChild(mensagemNaoEncontrado);
+            }
+            mensagemNaoEncontrado.style.display = 'flex';
+        } else {
+            if (mensagemNaoEncontrado) {
+                mensagemNaoEncontrado.style.display = 'none';
             }
         }
     }

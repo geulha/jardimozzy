@@ -24,27 +24,20 @@
 <section class="pet-section">
     <div class="pet-container">
 
-        <!-- Card Principal do Pet -->
         <div class="pet-card">
 
-            <!-- Conteúdo do Card -->
             <div class="pet-card-content">
 
-                <!-- Seção Superior: Imagem + Info -->
                 <div class="pet-top-section">
-                    <!-- Imagem do Pet -->
                     <div class="pet-image-circle">
-                        <img th:src="@{'/uploads/pets/' + ${pet.foto}}"
+                        <img th:src="${pet.foto != null ? '/uploads/pets/' + pet.foto : '/img/placeholder_img.png'}"
                              th:alt="${pet.nome}"
-                             onerror="this.src='/img/default-pet.png'">
+                             onerror="this.src='/img/placeholder_img.png'">
                     </div>
 
-                    <!-- Info à direita -->
                     <div class="pet-info-right">
-                        <!-- Nome do Pet -->
                         <h1 class="pet-title" th:text="${pet.nome}">Rex</h1>
 
-                        <!-- Informações em box rosa -->
                         <div class="pet-info-box">
                             <p><strong>Tutor:</strong> <span th:text="${pet.usuario.nome}">Nome</span></p>
                             <p><strong>Data de nascimento:</strong> <span th:text="${#temporals.format(pet.dataNascimento, 'dd/MM/yyyy')}">12/10/2011</span></p>
@@ -53,7 +46,6 @@
                     </div>
                 </div>
 
-                <!-- Sobre o Pet -->
                 <div class="sobre-pet">
                     <h3>Sobre <span th:text="${pet.nome}">Rex</span>:</h3>
                     <p th:text="${pet.sobre}">
@@ -61,7 +53,6 @@
                     </p>
                 </div>
 
-                <!-- Botões de Ação -->
                 <div class="action-buttons-row">
                     <button class="btn-action btn-comentario-action" onclick="toggleComentarioBox()">
                         Deixar um comentário
@@ -74,7 +65,6 @@
                     </form>
                 </div>
 
-                <!-- Caixa de Comentário (oculta inicialmente) -->
                 <div class="comentario-form-box" id="comentarioFormBox" style="display: none;">
                     <h4>Escreva seu comentário:</h4>
                     <form th:action="@{/comentarios/adicionar}" method="post">
@@ -94,7 +84,6 @@
                     </form>
                 </div>
 
-                <!-- Histórico -->
                 <div class="historico-section">
                     <h3>Histórico:</h3>
 
