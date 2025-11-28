@@ -38,7 +38,7 @@ body {
 
 /* Primeira linha maior */
 .hero-content h1 .line1 {
-    font-family: 'League Spartan', serif;
+    font-family: 'Signika', sans-serif;
     font-size: clamp(3.5rem, 8vw, 6rem);
     text-align: center;
     display: block;
@@ -48,7 +48,7 @@ body {
 
 /* Segunda linha com "do" */
 .hero-content h1 .line2 {
-    font-family: 'League Spartan', serif;
+    font-family: 'Signika', sans-serif;
     font-size: clamp(3.5rem, 8vw, 6rem);
     display: inline-block;
 }
