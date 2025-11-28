@@ -1,0 +1,359 @@
+body {
+    font-family: 'Quicksand', sans-serif;
+    overflow-x: hidden;
+    min-height: 100vh;
+    display: flex;
+    user-select: none;
+    flex-direction: column;
+}
+
+/* --- Seção principal --- */
+.perfil-section {
+    flex: 1;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 7rem 2rem 3rem;
+}
+
+.perfil-container {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+/* --- Barra de boas-vindas --- */
+.welcome-bar {
+    background: linear-gradient(135deg, #c5d0a8 0%, #9bab73 100%);
+    border-radius: 24px;
+    padding: 2rem 3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 4px 16px rgba(168, 201, 160, 0.15);
+}
+
+.welcome-text {
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.welcome-actions {
+    display: flex;
+    gap: 1rem;
+}
+
+.btn-alterar,
+.btn-sair {
+    text-decoration: none;
+    padding: 0.7rem 1.8rem;
+    border-radius: 12px;
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-alterar {
+    background: white;
+    color: #466a69;
+}
+
+.btn-alterar:hover {
+    background: #f5f5f5;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.btn-sair {
+    background: transparent;
+    color: white;
+    border: 2px solid white;
+}
+
+.btn-sair:hover {
+    background: rgba(255, 255, 255, 0.15);
+    transform: translateY(-2px);
+}
+
+/* --- Seção de pets --- */
+.pets-section {
+    background: white;
+    border-radius: 24px;
+    padding: 2.5rem 3rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+}
+
+.pets-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2.5rem;
+}
+
+.pets-header h2 {
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 2rem;
+    background: linear-gradient(135deg, #c5d0a8 0%, #466a69 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.btn-adicionar {
+    background: linear-gradient(135deg, #ff94b3 0%, #ff7fa6 100%);
+    color: white;
+    text-decoration: none;
+    padding: 0.8rem 2rem;
+    border-radius: 12px;
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-adicionar:hover {
+    background: linear-gradient(135deg, #ff7fa6 0%, #ff6a99 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 148, 179, 0.3);
+}
+
+/* --- Grid de pets --- */
+.pets-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Card do pet --- */
+.pet-card {
+    background: linear-gradient(135deg, #f0ede3 0%, #e8e4d8 100%);
+    border-radius: 20px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+    transition: all 0.3s ease;
+}
+
+.pet-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.pet-card-header {
+    background: linear-gradient(135deg, #72897f 0%, #5a746a 100%);
+    border-radius: 16px;
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.pet-name {
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 1.5rem;
+    color: white;
+}
+
+.pet-actions {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.icon-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 8px;
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+}
+
+.icon-btn svg {
+    color: white;
+}
+
+.icon-btn:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: scale(1.1);
+}
+
+/* --- Imagem do pet --- */
+.pet-image {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.pet-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* --- Botão visitar --- */
+.btn-visitar {
+    background: linear-gradient(135deg, #72897f 0%, #5a746a 100%);
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 0.9rem;
+    border-radius: 12px;
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+.btn-visitar:hover {
+    background: linear-gradient(135deg, #5a746a 0%, #4a6258 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(114, 137, 127, 0.3);
+}
+
+/* --- Estado vazio (sem pets) --- */
+.empty-state {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 2rem;
+    text-align: center;
+    gap: 1.5rem;
+}
+
+.empty-icon {
+    font-size: 4rem;
+    opacity: 0.5;
+}
+
+.empty-state p {
+    font-size: 1.2rem;
+    color: #666;
+    font-family: 'Quicksand Bold', sans-serif;
+}
+
+.btn-adicionar-empty {
+    background: linear-gradient(135deg, #ff94b3 0%, #ff7fa6 100%);
+    color: white;
+    text-decoration: none;
+    padding: 1rem 2.5rem;
+    border-radius: 12px;
+    font-family: 'Quicksand Bold', sans-serif;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+}
+
+.btn-adicionar-empty:hover {
+    background: linear-gradient(135deg, #ff7fa6 0%, #ff6a99 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 148, 179, 0.3);
+}
+
+/* --- Responsivo --- */
+@media (max-width: 768px) {
+    .perfil-section {
+        padding: 6rem 1.5rem 2rem;
+    }
+
+    .welcome-bar {
+        flex-direction: column;
+        gap: 1.5rem;
+        padding: 1.5rem 2rem;
+        text-align: center;
+    }
+
+    .welcome-text {
+        font-size: 1.8rem;
+    }
+
+    .welcome-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .pets-section {
+        padding: 2rem 1.5rem;
+    }
+
+    .pets-header {
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: flex-start;
+    }
+
+    .pets-header h2 {
+        font-size: 1.6rem;
+    }
+
+    .btn-adicionar {
+        width: 100%;
+        text-align: center;
+    }
+
+    .pets-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        padding: 1rem 1.5rem;
+    }
+
+    nav ul {
+        gap: 1rem;
+    }
+
+    nav a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .perfil-section {
+        padding: 5.5rem 1rem 2rem;
+    }
+
+    .welcome-bar {
+        padding: 1.2rem 1.5rem;
+    }
+
+    .welcome-text {
+        font-size: 1.5rem;
+    }
+
+    .btn-alterar,
+    .btn-sair {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .pets-section {
+        padding: 1.5rem 1rem;
+    }
+
+    .pets-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .pet-card {
+        padding: 1.2rem;
+    }
+
+    .pet-name {
+        font-size: 1.3rem;
+    }
+}

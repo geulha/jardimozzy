@@ -1,27 +1,3 @@
-@font-face {
-    font-family: 'League Spartan';
-    src: url('/fonts/LeagueSpartan-bold.ttf') format('truetype');
-    font-weight: bold;
-}
-
-@font-face {
-    font-family: 'Quicksand';
-    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
-    font-weight: normal;
-}
-
-@font-face {
-    font-family: 'Quicksand Bold';
-    src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
-    font-weight: bold;
-}
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 body {
     font-family: 'Quicksand', sans-serif;
     overflow-x: hidden;
@@ -30,55 +6,6 @@ body {
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
-}
-
-/* Fundo gradiente suave */
-.background-gradient {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: #f1eee3;
-    z-index: -2;
-}
-
-/* Header colorido com degradê */
-header {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    width: 100%;
-    z-index: 50;
-    padding: 1.5rem 3rem;
-    background: linear-gradient(to right, #fc729c, #f9c7d3);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    gap: 2.5rem;
-    align-items: center;
-}
-
-nav a {
-    text-decoration: none;
-    color: white;
-    font-weight: 600;
-    font-size: 1rem;
-    transition: all 0.3s ease;
-    position: relative;
-}
-
-nav a::after {
-    display: none;
-}
-
-nav a:hover {
-    color: #2d3436;
-    transform: translateY(-2px);
 }
 
 /* Seção principal */
@@ -94,6 +21,7 @@ nav a:hover {
     background: white;
     position: relative;
     border-radius: 24px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
     max-width: 1000px;
     width: 100%;
     display: flex;
@@ -137,7 +65,7 @@ nav a:hover {
     width: 320px;
 }
 
-.polaroid-image {
+.polaroid-ozzy {
     width: 100%;
     height: 400px;
     background: url('/img/ozzy.png') no-repeat center;
@@ -145,7 +73,7 @@ nav a:hover {
 }
 
 /* Ilustração do gatinho - canto esquerdo */
-.cat-illustration {
+.imagem-gato {
     position: absolute;
     left: -8%;
     bottom: -12%;
@@ -157,7 +85,7 @@ nav a:hover {
 }
 
 /* Ilustração da flor - canto direito */
-.flower-illustration {
+.imagem-flor {
     position: absolute;
     right: 0%;
     bottom: 0%;
@@ -170,13 +98,13 @@ nav a:hover {
 
 /* Responsivo */
 @media (max-width: 1024px) {
-    .cat-illustration {
+    .imagem-gato {
         width: 140px;
         height: 140px;
         left: -3%;
     }
 
-    .flower-illustration {
+    .imagem-flor {
         width: 160px;
         height: 180px;
         right: -2%;
@@ -212,12 +140,12 @@ nav a:hover {
         width: 240px;
     }
 
-    .polaroid-image {
+    .polaroid-ozzy {
         height: 220px;
     }
 
-    .cat-illustration,
-    .flower-illustration {
+    .imagem-gato,
+    .imagem-flor {
         display: none;
     }
 }
@@ -251,11 +179,7 @@ nav a:hover {
         width: 200px;
     }
 
-    .polaroid-image {
+    .polaroid-ozzy {
         height: 180px;
-    }
-
-    .polaroid-caption {
-        font-size: 0.85rem;
     }
 }

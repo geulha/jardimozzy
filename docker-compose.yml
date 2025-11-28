@@ -1,0 +1,46 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: jardim_ozzy_postgres
+    environment:
+      POSTGRES_DB: jardim_ozzy
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: poo-666
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - jardim-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  app:
+    build: .
+    container_name: jardim_ozzy_app
+    ports:
+      - "8080:8080"
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/jardim_ozzy
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: poo-666
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+    volumes:
+      - ./uploads:/app/uploads
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - jardim-network
+
+volumes:
+  postgres_data:
+
+networks:
+  jardim-network:
+    driver: bridge

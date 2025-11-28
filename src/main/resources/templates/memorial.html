@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memorial dos Pets - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/memorial.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="memorial-section">
+    <div class="memorial-container">
+        <!-- Cabeçalho com título e busca -->
+        <div class="memorial-header">
+            <h1>Memorial dos Pets</h1>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="Pesquisar" onkeyup="filtrarPets()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Grid de pets (horizontal scroll) -->
+        <div class="pets-grid" id="petsGrid">
+            <!-- Estado vazio (quando não há pets) -->
+            <div th:if="${#lists.isEmpty(pets)}" class="empty-state">
+                <div class="empty-icon">🐾</div>
+                <p>Nenhum pet cadastrado ainda.</p>
+            </div>
+
+            <!-- Cards dos pets -->
+            <div class="pet-card" th:each="pet : ${pets}" th:data-nome="${pet.nome}">
+                <div class="pet-image-container">
+                    <img th:src="@{'/uploads/pets/' + ${pet.foto}}"
+                         th:alt="${pet.nome}"
+                         onerror="this.src='/img/default-pet.png'">
+                </div>
+                <div class="pet-info">
+                    <h3 th:text="${pet.nome}">Nome do Pet</h3>
+                    <p class="pet-tutor">
+                        Tutor:<br>
+                        <strong th:text="${pet.usuario.nome}">Nome</strong>
+                    </p>
+                    <a th:href="@{'/pet/' + ${pet.id}}" class="btn-visitar">Visitar</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function filtrarPets() {
+        const input = document.getElementById('searchInput');
+        const filter = input.value.toLowerCase();
+        const grid = document.getElementById('petsGrid');
+        const cards = grid.getElementsByClassName('pet-card');
+
+        for (let i = 0; i < cards.length; i++) {
+            const nomePet = cards[i].getAttribute('data-nome');
+            if (nomePet && nomePet.toLowerCase().includes(filter)) {
+                cards[i].style.display = '';
+            } else {
+                cards[i].style.display = 'none';
+            }
+        }
+    }
+</script>
+
+</body>
+</html>

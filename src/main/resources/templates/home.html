@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>O Jardim do Ozzy</title>
     <link rel="stylesheet" th:href="@{/css/home.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
 <div class="background-gradient"></div>
@@ -16,6 +17,7 @@
             <li><a href="/">Home</a></li>
             <li><a href="/historia">A História do Ozzy</a></li>
             <li><a href="/perfil">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
         </ul>
     </nav>
 </header>
@@ -34,10 +36,8 @@
         <a href="/login" class="btn">Entrar</a>
     </div>
 
-    <!-- Lado direito: Imagem -->
-    <div class="image-container">
-        <!-- Imagem adicionada via CSS -->
-    </div>
+    <div class="imagem-ozzy"></div>
+
 </section>
 </body>
 </html>

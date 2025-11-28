@@ -1,11 +1,91 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>O Jardim do Ozzy</title>
+    <title>Perfil - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/perfil.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
-<h1>Perfil - EM CONSTRUÇÃO</h1>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="perfil-section">
+    <div class="perfil-container">
+        <!-- Barra de boas-vindas -->
+        <div class="welcome-bar">
+            <h1 class="welcome-text">Olá, <span th:text="${usuario.nome}">Nome</span>!</h1>
+            <div class="welcome-actions">
+                <a th:href="@{/editarperfil}" class="btn-alterar">Alterar dados</a>
+                <a th:href="@{/logout}" class="btn-sair">Sair</a>
+            </div>
+        </div>
+
+        <!-- Seção de pets -->
+        <div class="pets-section">
+            <div class="pets-header">
+                <h2>Meus pets</h2>
+                <a th:href="@{/criarpet}" class="btn-adicionar">Adicionar Pet</a>
+            </div>
+
+            <!-- Lista de pets (quando existir pelo menos um) -->
+            <div class="pets-grid" th:if="${pets != null and !pets.isEmpty()}">
+                <div class="pet-card" th:each="pet : ${pets}">
+                    <div class="pet-card-header">
+                        <h3 class="pet-name" th:text="${pet.nome}">Rex</h3>
+                        <div class="pet-actions">
+                            <a th:href="@{/editarpet/{id}(id=${pet.id})}" class="icon-btn" title="Editar">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                </svg>
+                            </a>
+                            <button class="icon-btn" title="Excluir" onclick="confirmarExclusao(this)" th:data-pet-id="${pet.id}">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <polyline points="3 6 5 6 21 6"></polyline>
+                                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                </svg>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="pet-image">
+                        <img th:src="@{'/uploads/pets/' + ${pet.foto}}" th:alt="${pet.nome}" onerror="this.src='/img/pet-placeholder.png'">
+                    </div>
+
+                    <a th:href="@{/pet/{id}(id=${pet.id})}" class="btn-visitar">Visitar</a>
+                </div>
+            </div>
+
+            <!-- Mensagem quando não há pets cadastrados -->
+            <div class="empty-state" th:if="${pets == null or pets.isEmpty()}">
+                <div class="empty-icon">🐾</div>
+                <p>Você ainda não registrou nenhum pet</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function confirmarExclusao(button) {
+        const petId = button.getAttribute('data-pet-id');
+        if (confirm('Tem certeza que deseja excluir este pet? Esta ação não pode ser desfeita.')) {
+            // Aqui você implementará a lógica de exclusão quando tiver o backend
+            window.location.href = '/excluirpet/' + petId;
+        }
+    }
+</script>
+
 </body>
 </html>

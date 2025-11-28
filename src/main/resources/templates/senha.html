@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Recuperar Senha - O Jardim do Ozzy</title>
     <link rel="stylesheet" th:href="@{/css/senha.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
 <div class="background-gradient"></div>
@@ -13,9 +14,9 @@
     <nav>
         <ul>
             <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
             <li><a th:href="@{/perfil}">Perfil</a></li>
-            <li style="margin-left: auto;"><a th:href="@{/logout}">Sair</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
         </ul>
     </nav>
 </header>
@@ -37,7 +38,7 @@
                     <div class="form-group">
                         <label for="pergunta">Pergunta de segurança</label>
                         <select id="pergunta" name="pergunta" required>
-                            <option value="" disabled selected>Qual o cidade de nascimento da sua mãe?</option>
+                            <option value="" disabled selected>Escolha sua pergunta</option>
                             <option value="Qual é o nome do seu melhor amigo de infância?">Qual é o nome do seu melhor amigo de infância?</option>
                             <option value="Qual foi o destino da sua primeira viagem?">Qual foi o destino da sua primeira viagem?</option>
                             <option value="Qual o nome da cidade que sua mãe nasceu?">Qual o nome da cidade que sua mãe nasceu?</option>
@@ -55,7 +56,7 @@
         </div>
 
         <!-- Ilustração do gato -->
-        <div class="cat-illustration"></div>
+        <div class="imagem-gato"></div>
     </div>
 </section>
 

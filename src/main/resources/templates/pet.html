@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title th:text="${pet.nome} + ' - O Jardim do Ozzy'">Pet - O Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/pet.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="pet-section">
+    <div class="pet-container">
+
+        <!-- Card Principal do Pet -->
+        <div class="pet-card">
+
+            <!-- Conteúdo do Card -->
+            <div class="pet-card-content">
+
+                <!-- Seção Superior: Imagem + Info -->
+                <div class="pet-top-section">
+                    <!-- Imagem do Pet -->
+                    <div class="pet-image-circle">
+                        <img th:src="@{'/uploads/pets/' + ${pet.foto}}"
+                             th:alt="${pet.nome}"
+                             onerror="this.src='/img/default-pet.png'">
+                    </div>
+
+                    <!-- Info à direita -->
+                    <div class="pet-info-right">
+                        <!-- Nome do Pet -->
+                        <h1 class="pet-title" th:text="${pet.nome}">Rex</h1>
+
+                        <!-- Informações em box rosa -->
+                        <div class="pet-info-box">
+                            <p><strong>Tutor:</strong> <span th:text="${pet.usuario.nome}">Nome</span></p>
+                            <p><strong>Data de nascimento:</strong> <span th:text="${#temporals.format(pet.dataNascimento, 'dd/MM/yyyy')}">12/10/2011</span></p>
+                            <p><strong>Virou florzinha em:</strong> <span th:text="${#temporals.format(pet.dataFalecimento, 'dd/MM/yyyy')}">06/07/2024</span></p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sobre o Pet -->
+                <div class="sobre-pet">
+                    <h3>Sobre <span th:text="${pet.nome}">Rex</span>:</h3>
+                    <p th:text="${pet.sobre}">
+                        Rex era um cachorrinho muito especial...
+                    </p>
+                </div>
+
+                <!-- Botões de Ação -->
+                <div class="action-buttons-row">
+                    <button class="btn-action btn-comentario-action" onclick="toggleComentarioBox()">
+                        Deixar um comentário
+                    </button>
+                    <form th:action="@{/comentarios/carinho}" method="post" style="width: 48%; margin: 0;">
+                        <input type="hidden" name="petId" th:value="${pet.id}">
+                        <button type="submit" class="btn-action btn-carinho-action">
+                            Deixar o seu carinho
+                        </button>
+                    </form>
+                </div>
+
+                <!-- Caixa de Comentário (oculta inicialmente) -->
+                <div class="comentario-form-box" id="comentarioFormBox" style="display: none;">
+                    <h4>Escreva seu comentário:</h4>
+                    <form th:action="@{/comentarios/adicionar}" method="post">
+                        <input type="hidden" name="petId" th:value="${pet.id}">
+                        <textarea name="conteudo"
+                                  placeholder="Escreva aqui..."
+                                  rows="5"
+                                  required></textarea>
+                        <div class="form-buttons-row">
+                            <button type="button" class="btn-cancelar-form" onclick="toggleComentarioBox()">
+                                Cancelar
+                            </button>
+                            <button type="submit" class="btn-enviar-form">
+                                Enviar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Histórico -->
+                <div class="historico-section">
+                    <h3>Histórico:</h3>
+
+                    <div th:if="${#lists.isEmpty(comentarios)}" class="empty-historico">
+                        <p>Nenhuma mensagem ainda. Seja o primeiro! 💕</p>
+                    </div>
+
+                    <div class="historico-lista">
+                        <div class="historico-item" th:each="comentario : ${comentarios}">
+                            <div class="historico-data"
+                                 th:text="${#temporals.format(comentario.dataComentario, 'dd/MM/yyyy')}">
+                                20/11/2025
+                            </div>
+                            <div class="historico-content">
+                                <p th:if="${comentario.conteudo.startsWith('❤️')}">
+                                    <span th:text="${comentario.usuario.nome}">Fulano</span> visitou
+                                    <span th:text="${pet.nome}">Rex</span> e deixou seu carinho! ❤️
+                                </p>
+                                <p th:unless="${comentario.conteudo.startsWith('❤️')}">
+                                    <strong><span th:text="${comentario.usuario.nome}">Ciclane</span> deixou um comentário:</strong><br>
+                                    <span th:text="${comentario.conteudo}">Comentário aqui...</span>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="gato-pet"></div>
+        <div class="cachorro-pet"></div>
+    </div>
+</section>
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+    const usuarioLogado = /*[[${usuarioLogado != null}]]*/ false;
+
+    function toggleComentarioBox() {
+        if (!usuarioLogado) {
+            alert('Você precisa estar logado para comentar!');
+            window.location.href = '/login';
+            return;
+        }
+
+        const box = document.getElementById('comentarioFormBox');
+        if (box.style.display === 'none') {
+            box.style.display = 'block';
+            document.querySelector('.comentario-form-box textarea').focus();
+        } else {
+            box.style.display = 'none';
+            document.querySelector('.comentario-form-box textarea').value = '';
+        }
+    }
+    /*]]>*/
+</script>
+
+</body>
+</html>

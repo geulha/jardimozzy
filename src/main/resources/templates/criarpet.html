@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Pet - Jardim do Ozzy</title>
+    <link rel="stylesheet" th:href="@{/css/criarpet.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
+</head>
+<body>
+<div class="background-gradient"></div>
+
+<header>
+    <nav>
+        <ul>
+            <li><a th:href="@{/}">Home</a></li>
+            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/perfil}">Perfil</a></li>
+            <li><a th:href="@{/memorial}" style="margin-left: auto;">Visitar Pets</a></li>
+        </ul>
+    </nav>
+</header>
+
+<!-- Ilustrações decorativas -->
+<div class="gato-criarpet"></div>
+
+<section class="cadastro-section">
+    <div class="cadastro-container">
+        <div class="cadastro-form">
+            <div class="form-header">
+                <h1>Registre seu pet no Jardim do Ozzy!</h1>
+            </div>
+
+            <div class="form-card">
+                <!-- Mensagem de erro -->
+                <div class="alert alert-error" th:if="${erro}" th:text="${erro}"></div>
+
+                <form th:action="@{/criarpet}" method="post" enctype="multipart/form-data" id="formCriarPet">
+                    <div class="form-row">
+                        <!-- Coluna esquerda -->
+                        <div class="form-column">
+                            <div class="form-group">
+                                <label for="nome">Nome do pet</label>
+                                <input type="text" id="nome" name="nome" placeholder="Rex" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dataNascimento">Data de nascimento</label>
+                                <input type="date" id="dataNascimento" name="dataNascimento" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="dataFalecimento">Virou florzinha em</label>
+                                <input type="date" id="dataFalecimento" name="dataFalecimento" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="sobre">Sobre seu pet</label>
+                                <textarea id="sobre" name="sobre" rows="4" placeholder="Descreva como ele(a) era e o que gostava de fazer..." required></textarea>
+                            </div>
+                        </div>
+
+                        <!-- Coluna direita -->
+                        <div class="form-column">
+
+                            <div class="form-group upload-group">
+                                <label>Upload de foto</label>
+                                <p class="upload-subtitle">Escolha uma foto do seu pet</p>
+
+                                <div class="upload-area">
+                                    <input type="file" id="foto" name="foto" accept="image/*" style="display: none;">
+                                    <div class="preview-container">
+                                        <img id="preview" src="/img/placeholder_img.png" alt="Preview da foto">
+                                    </div>
+                                    <button type="button" class="btn-selecionar" onclick="document.getElementById('foto').click()">
+                                        Selecionar
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-cadastrar">Criar Pet</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    // Preview da imagem
+    document.getElementById('foto').addEventListener('change', function(e) {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                document.getElementById('preview').src = e.target.result;
+            };
+            reader.readAsDataURL(file);
+        }
+    });
+
+    // Validação de datas
+    document.getElementById('formCriarPet').addEventListener('submit', function(e) {
+        const dataNascimento = new Date(document.getElementById('dataNascimento').value);
+        const dataFalecimento = new Date(document.getElementById('dataFalecimento').value);
+
+        if (dataFalecimento < dataNascimento) {
+            e.preventDefault();
+            alert('A data de falecimento não pode ser anterior à data de nascimento!');
+            return false;
+        }
+    });
+</script>
+
+<style>
+    .alert {
+        padding: 12px 20px;
+        margin-bottom: 20px;
+        border-radius: 8px;
+        font-size: 14px;
+    }
+
+    .alert-error {
+        background-color: #fee;
+        color: #c33;
+        border: 1px solid #fcc;
+    }
+</style>
+</body>
+</html>

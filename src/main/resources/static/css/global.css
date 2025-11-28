@@ -1,0 +1,73 @@
+@font-face {
+    font-family: 'League Spartan';
+    src: url('/fonts/LeagueSpartan-bold.ttf') format('truetype');
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Quicksand';
+    src: url('/fonts/Quicksand-Medium.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Quicksand Bold';
+    src: url('/fonts/Quicksand-Bold.ttf') format('truetype');
+    font-weight: normal;
+}
+
+@font-face {
+    font-family: 'Leckerli One';
+    src: url('/fonts/LeckerliOne-Regular.ttf') format('truetype');
+    font-weight: normal;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Fundo bege claro */
+.background-gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f1eee3;
+    z-index: -2;
+}
+
+/* Header rosa */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    z-index: 150;
+    padding: 1.5rem 3rem;
+    background: linear-gradient(to right, #fc729c, #f9c7d3);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    color: #2d3436;
+    transform: translateY(-2px);
+}

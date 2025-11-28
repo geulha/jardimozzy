@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login - O Jardim do Ozzy</title>
     <link rel="stylesheet" th:href="@{/css/login.css}">
+    <link rel="stylesheet" th:href="@{/css/global.css}">
 </head>
 <body>
 <div class="background-gradient"></div>
@@ -13,17 +14,15 @@
     <nav>
         <ul>
             <li><a th:href="@{/}">Home</a></li>
-            <li><a th:href="@{/historia}">A História de Ozzy</a></li>
+            <li><a th:href="@{/historia}">A História do Ozzy</a></li>
             <li><a th:href="@{/perfil}">Perfil</a></li>
-            <li style="margin-left: auto;"><a th:href="@{/logout}">Sair</a></li>
+            <li style="margin-left: auto;"><a th:href="@{/memorial}">Visitar Pets</a></li>
         </ul>
     </nav>
 </header>
 
 <section class="login-section">
     <div class="login-container">
-        <!-- As ilustrações são adicionadas via CSS ::before e ::after -->
-
         <div class="login-form">
             <div class="login-form-header">
                 <h1>Bem-vindo!</h1>
